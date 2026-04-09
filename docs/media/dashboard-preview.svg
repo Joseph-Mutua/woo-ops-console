@@ -1,0 +1,50 @@
+<svg width="1600" height="960" viewBox="0 0 1600 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="960" fill="#F7F3EB"/>
+  <circle cx="120" cy="140" r="180" fill="#0E749020"/>
+  <circle cx="1470" cy="820" r="210" fill="#D3602B20"/>
+  <rect x="72" y="64" width="1456" height="132" rx="36" fill="white" fill-opacity="0.82" stroke="#14202B14"/>
+  <text x="120" y="116" fill="#0F5D76" font-family="Segoe UI, sans-serif" font-size="20" letter-spacing="4">MERCHANT OPERATIONS</text>
+  <text x="120" y="172" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="56" font-weight="700">Woo Ops Console</text>
+  <rect x="72" y="228" width="332" height="148" rx="28" fill="white" fill-opacity="0.88" stroke="#AF2A2A24"/>
+  <rect x="422" y="228" width="332" height="148" rx="28" fill="white" fill-opacity="0.88" stroke="#C4642024"/>
+  <rect x="772" y="228" width="332" height="148" rx="28" fill="white" fill-opacity="0.88" stroke="#C4642024"/>
+  <rect x="1122" y="228" width="332" height="148" rx="28" fill="white" fill-opacity="0.88" stroke="#07784324"/>
+  <text x="108" y="278" fill="#526374" font-family="Segoe UI, sans-serif" font-size="20">Orders at risk</text>
+  <text x="108" y="338" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="56" font-weight="700">12</text>
+  <text x="458" y="278" fill="#526374" font-family="Segoe UI, sans-serif" font-size="20">Pending too long</text>
+  <text x="458" y="338" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="56" font-weight="700">7</text>
+  <text x="808" y="278" fill="#526374" font-family="Segoe UI, sans-serif" font-size="20">Refund spike</text>
+  <text x="808" y="338" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="56" font-weight="700">5</text>
+  <text x="1158" y="278" fill="#526374" font-family="Segoe UI, sans-serif" font-size="20">Failed checkout trend</text>
+  <text x="1158" y="338" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="56" font-weight="700">9</text>
+  <rect x="72" y="410" width="980" height="478" rx="34" fill="white" fill-opacity="0.88" stroke="#14202B14"/>
+  <rect x="1088" y="410" width="368" height="228" rx="30" fill="white" fill-opacity="0.88" stroke="#14202B14"/>
+  <rect x="1088" y="660" width="368" height="228" rx="30" fill="white" fill-opacity="0.88" stroke="#14202B14"/>
+  <text x="110" y="458" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="18" letter-spacing="3">ORDER EXCEPTIONS DASHBOARD</text>
+  <text x="110" y="496" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="34" font-weight="700">Flagged orders needing attention</text>
+  <rect x="110" y="542" width="904" height="82" rx="22" fill="#F7FAFC"/>
+  <rect x="110" y="640" width="904" height="82" rx="22" fill="#F7FAFC"/>
+  <rect x="110" y="738" width="904" height="82" rx="22" fill="#F7FAFC"/>
+  <text x="146" y="592" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700">#3104</text>
+  <text x="146" y="690" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700">#3110</text>
+  <text x="146" y="788" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700">#3098</text>
+  <rect x="358" y="566" width="120" height="34" rx="17" fill="#FEE2E2"/>
+  <rect x="358" y="664" width="120" height="34" rx="17" fill="#FFF0DA"/>
+  <rect x="358" y="762" width="120" height="34" rx="17" fill="#FFF0DA"/>
+  <text x="386" y="589" fill="#B42318" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700">78 · High</text>
+  <text x="382" y="687" fill="#A55A06" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700">66 · Watch</text>
+  <text x="382" y="785" fill="#A55A06" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700">54 · Watch</text>
+  <text x="1120" y="458" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="18" letter-spacing="3">BULK TRIAGE ACTIONS</text>
+  <text x="1120" y="496" fill="#14202B" font-family="Segoe UI, sans-serif" font-size="34" font-weight="700">Act on the current selection</text>
+  <rect x="1120" y="530" width="304" height="52" rx="18" fill="#F7FAFC"/>
+  <rect x="1120" y="740" width="304" height="54" rx="18" fill="url(#paint0_linear)"/>
+  <text x="1142" y="563" fill="#526374" font-family="Segoe UI, sans-serif" font-size="18">3 selected orders</text>
+  <text x="1148" y="774" fill="white" font-family="Segoe UI, sans-serif" font-size="20" font-weight="700">Apply triage action</text>
+  <text x="1120" y="708" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="18" letter-spacing="3">MERCHANT INSIGHTS PANEL</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="1120" y1="740" x2="1424" y2="794" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F5D76"/>
+      <stop offset="1" stop-color="#D3602B"/>
+    </linearGradient>
+  </defs>
+</svg>
