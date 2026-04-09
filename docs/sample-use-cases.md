@@ -15,3 +15,4 @@ A merchant sees a spike in refund anomalies, opens the flagged orders, and uses 
 ## 4. Missing shipping detail cleanup
 
 Support filters to `Missing shipping details`, adds internal notes for orders missing destination fields, then contacts only the customers who truly need clarification.
+

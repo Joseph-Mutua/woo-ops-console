@@ -1,8 +1,8 @@
-# Woo Ops Console
+# Merchant Ops Console for WooCommerce
 
-Woo Ops Console is a WooCommerce extension for merchant operations teams. It focuses on operational friction after checkout: failed payments, risky fulfillment delays, missing shipping details, refund anomalies, and repeated customer edits.
+Merchant Ops Console is a WooCommerce extension for merchant operations teams. It focuses on operational friction after checkout: failed payments, risky fulfillment delays, missing shipping details, refund anomalies, and repeated customer edits.
 
-![Woo Ops Console Exceptions dashboard](./assets/screenshot-1.png)
+![Merchant Ops Console Exceptions dashboard](./assets/screenshot-1.png)
 
 ## Quick Look
 
@@ -10,7 +10,7 @@ Woo Ops Console is a WooCommerce extension for merchant operations teams. It foc
 | --- | --- | --- |
 | Order Exceptions Dashboard | Surfaces orders with operational friction and risk signals | Helps teams prioritize real problems instead of scanning every order manually |
 | Bulk Triage Actions | Lets admins mark flagged orders for review, add internal notes, and export focused CSVs | Speeds up coordination across support, fulfillment, and finance |
-| Fulfillment Risk Indicator | Scores each order by payment, shipping, refund, inventory, and edit signals | Makes risk legible on both the dashboard and order screens |
+| Risk Analysis | Scores each order by payment, shipping, refund, inventory, and edit signals | Makes risk legible on both the dashboard and order screens |
 | Merchant Insights Panel | Shows concentration cards and issue breakdowns | Gives ops leads a quick read on what is spiking |
 | AI-assisted Issue Summary | Generates short explanations for why an order is flagged, while keeping people in control | Adds context without automating away judgment |
 
@@ -118,9 +118,9 @@ It is designed to:
 
 ### Installation
 
-1. Place `woo-ops-console` in `wp-content/plugins/`.
+1. Place `merchant-ops-console` in `wp-content/plugins/`.
 2. Activate the plugin in WordPress admin.
-3. Open `WooCommerce > Woo Ops Console`.
+3. Open `WooCommerce > Merchant Ops Console`.
 4. If WooCommerce has no qualifying orders yet, the console falls back to seeded demo data so the UX can still be reviewed.
 
 ### Development
@@ -134,11 +134,30 @@ npm run test
 npm run build
 ```
 
+## Source Code and Build Process
+
+Human-readable source code is included directly in this repository and in the distributable plugin package:
+
+- src/ contains the React admin application, utilities, and PHP runtime source
+- uild/ contains the compiled production assets generated from src/
+- package.json defines the build, lint, and test commands
+- package-lock.json locks the dependency tree used to generate the production build
+
+Build commands:
+
+`powershell
+npm install
+npm run lint
+npm run test
+npm run build
+`
+
+The plugin does not load third-party scripts, styles, or external services by default. The AI-assisted summary feature is local and heuristic, with an optional PHP filter for developers who want to extend it.
 ## Architecture Overview
 
 Core runtime pieces:
 
-- `woo-ops-console.php`
+- `merchant-ops-console.php`
   Plugin bootstrap and constants.
 - `src/php/Plugin.php`
   Service orchestration and HPOS compatibility.
@@ -229,3 +248,9 @@ Current coverage includes:
 - [docs/sample-use-cases.md](./docs/sample-use-cases.md)
 - [docs/media/dashboard-preview.svg](./docs/media/dashboard-preview.svg)
 - [docs/media/order-risk-preview.svg](./docs/media/order-risk-preview.svg)
+
+
+
+
+
+

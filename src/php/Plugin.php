@@ -2,20 +2,20 @@
 /**
  * Plugin orchestrator.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole;
+namespace MerchantOpsConsole;
 
-use WooOpsConsole\Admin\AdminNotice;
-use WooOpsConsole\Admin\AdminPage;
-use WooOpsConsole\Admin\OrderScreen;
-use WooOpsConsole\Contracts\ServiceContract;
-use WooOpsConsole\WooCommerce\OrderInsightsService;
-use WooOpsConsole\WooCommerce\OrderTriageService;
-use WooOpsConsole\WooCommerce\RestController;
+use MerchantOpsConsole\Admin\AdminNotice;
+use MerchantOpsConsole\Admin\AdminPage;
+use MerchantOpsConsole\Admin\OrderScreen;
+use MerchantOpsConsole\Contracts\ServiceContract;
+use MerchantOpsConsole\WooCommerce\OrderInsightsService;
+use MerchantOpsConsole\WooCommerce\OrderTriageService;
+use MerchantOpsConsole\WooCommerce\RestController;
 
 final class Plugin {
 	/**
@@ -43,7 +43,7 @@ final class Plugin {
 			return;
 		}
 
-		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', WOO_OPS_CONSOLE_FILE, true );
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', MERCHANT_OPS_CONSOLE_FILE, true );
 	}
 
 	/**

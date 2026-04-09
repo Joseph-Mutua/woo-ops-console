@@ -2,14 +2,14 @@
 /**
  * Admin notices for requirements and degraded states.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole\Admin;
+namespace MerchantOpsConsole\Admin;
 
-use WooOpsConsole\Contracts\ServiceContract;
+use MerchantOpsConsole\Contracts\ServiceContract;
 
 final class AdminNotice implements ServiceContract {
 	/**
@@ -33,7 +33,7 @@ final class AdminNotice implements ServiceContract {
 
 		printf(
 			'<div class="notice notice-warning"><p>%s</p></div>',
-			esc_html__( 'Woo Ops Console works best with WooCommerce active. The plugin will fall back to demo insights until WooCommerce is available.', 'woo-ops-console' )
+			esc_html__( 'Merchant Ops Console works best with WooCommerce active. The plugin will fall back to demo insights until WooCommerce is available.', 'merchant-ops-console' )
 		);
 	}
 }

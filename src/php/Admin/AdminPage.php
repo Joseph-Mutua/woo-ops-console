@@ -2,18 +2,18 @@
 /**
  * Admin page registration and asset loading.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole\Admin;
+namespace MerchantOpsConsole\Admin;
 
-use WooOpsConsole\Contracts\ServiceContract;
-use WooOpsConsole\WooCommerce\OrderInsightsService;
+use MerchantOpsConsole\Contracts\ServiceContract;
+use MerchantOpsConsole\WooCommerce\OrderInsightsService;
 
 final class AdminPage implements ServiceContract {
-	private const PAGE_SLUG = 'woo-ops-console';
+	private const PAGE_SLUG = 'merchant-ops-console';
 
 	private OrderInsightsService $order_insights;
 
@@ -35,8 +35,8 @@ final class AdminPage implements ServiceContract {
 	public function register_menu(): void {
 		add_submenu_page(
 			'woocommerce',
-			__( 'Woo Ops Console', 'woo-ops-console' ),
-			__( 'Woo Ops Console', 'woo-ops-console' ),
+			__( 'Merchant Ops Console', 'merchant-ops-console' ),
+			__( 'Merchant Ops Console', 'merchant-ops-console' ),
 			'manage_woocommerce',
 			self::PAGE_SLUG,
 			array( $this, 'render_page' )
@@ -51,38 +51,38 @@ final class AdminPage implements ServiceContract {
 			return;
 		}
 
-		$asset_path = WOO_OPS_CONSOLE_PATH . 'build/index.asset.php';
+		$asset_path = MERCHANT_OPS_CONSOLE_PATH . 'build/index.asset.php';
 		$asset_data = file_exists( $asset_path )
 			? require $asset_path
 			: array(
 				'dependencies' => array( 'wp-api-fetch', 'wp-components', 'wp-element', 'wp-i18n' ),
-				'version'      => WOO_OPS_CONSOLE_VERSION,
+				'version'      => MERCHANT_OPS_CONSOLE_VERSION,
 			);
 
 		wp_enqueue_style(
-			'woo-ops-console-admin',
-			WOO_OPS_CONSOLE_URL . 'build/index.css',
+			'merchant-ops-console-admin',
+			MERCHANT_OPS_CONSOLE_URL . 'build/index.css',
 			array(),
 			$asset_data['version']
 		);
 		wp_enqueue_script(
-			'woo-ops-console-admin',
-			WOO_OPS_CONSOLE_URL . 'build/index.js',
+			'merchant-ops-console-admin',
+			MERCHANT_OPS_CONSOLE_URL . 'build/index.js',
 			$asset_data['dependencies'],
 			$asset_data['version'],
 			true
 		);
 
 		wp_add_inline_script(
-			'woo-ops-console-admin',
+			'merchant-ops-console-admin',
 			'window.wooOpsConsoleConfig = ' . wp_json_encode(
 				array(
 					'dashboard' => $this->order_insights->get_dashboard_payload(),
-					'restUrl'   => esc_url_raw( rest_url( 'woo-ops-console/v1' ) ),
+					'restUrl'   => esc_url_raw( rest_url( 'merchant-ops-console/v1' ) ),
 					'nonce'     => wp_create_nonce( 'wp_rest' ),
 					'labels'    => array(
-						'refreshed' => __( 'Dashboard refreshed.', 'woo-ops-console' ),
-						'triaged'   => __( 'Orders updated.', 'woo-ops-console' ),
+						'refreshed' => __( 'Dashboard refreshed.', 'merchant-ops-console' ),
+						'triaged'   => __( 'Orders updated.', 'merchant-ops-console' ),
 					),
 				)
 			),
@@ -94,6 +94,6 @@ final class AdminPage implements ServiceContract {
 	 * Renders the admin page root.
 	 */
 	public function render_page(): void {
-		echo '<div class="wrap woo-ops-console-admin-wrap"><div id="woo-ops-console-root"></div></div>';
+		echo '<div class="wrap merchant-ops-console-admin-wrap"><div id="merchant-ops-console-root"></div></div>';
 	}
 }

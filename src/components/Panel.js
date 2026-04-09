@@ -9,3 +9,4 @@ export function Panel( { eyebrow, title, children } ) {
 		</section>
 	);
 }
+

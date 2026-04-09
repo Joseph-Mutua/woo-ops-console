@@ -23,11 +23,11 @@
 	--wooops-admin-bar-height: 32px;
 }
 
-#woo-ops-console-root {
+#merchant-ops-console-root {
 	margin-left: 0;
 }
 
-#woo-ops-console-root * {
+#merchant-ops-console-root * {
 	box-sizing: border-box;
 }
 
@@ -815,7 +815,7 @@
 		display: none;
 	}
 
-	#woo-ops-console-root {
+	#merchant-ops-console-root {
 		margin-left: 0;
 	}
 
@@ -904,6 +904,7 @@
 		min-width: 48rem;
 	}
 }
+
 
 
 

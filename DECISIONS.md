@@ -19,3 +19,4 @@ The “AI-assisted” summary defaults to deterministic language, then exposes a fil
 ## 5. Match the design language without fighting WordPress admin reality
 
 The control-tower design system is adapted into a WordPress-friendly admin shell: same atmosphere, surfaces, color logic, and visual rhythm, but with practical concessions for table density and admin layout constraints.
+

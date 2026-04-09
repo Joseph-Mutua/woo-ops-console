@@ -1,13 +1,13 @@
 # Local Development and Testing
 
-This guide walks through the exact steps for running and testing Woo Ops Console on a local WordPress + WooCommerce site.
+This guide walks through the exact steps for running and testing Merchant Ops Console for WooCommerce on a local WordPress + WooCommerce site.
 
 ## 1. Open the plugin folder
 
 Use PowerShell and move into the plugin directory:
 
 ```powershell
-cd D:\Work\Plugins\woo-ops-console
+cd D:\Work\Plugins\merchant-ops-console
 ```
 
 ## 2. Install dependencies and build assets
@@ -63,14 +63,14 @@ C:\Users\user\Local Sites\your-site\app\public\wp-content\plugins
 Copy the full plugin folder into the local site's plugins directory so the destination becomes:
 
 ```text
-...\wp-content\plugins\woo-ops-console
+...\wp-content\plugins\merchant-ops-console
 ```
 
 Because symlinks caused asset URL issues in an earlier Local setup, a real copied folder is the safest option here.
 
 Recommended workflow:
 
-1. Edit the source in `D:\Work\Plugins\woo-ops-console`.
+1. Edit the source in `D:\Work\Plugins\merchant-ops-console`.
 2. Run `npm run build`.
 3. Copy the updated plugin files into the Local site.
 
@@ -79,8 +79,8 @@ Recommended workflow:
 In WP Admin:
 
 1. Go to `Plugins`.
-2. Activate `Woo Ops Console`.
-3. Open `WooCommerce > Woo Ops Console`.
+2. Activate `Merchant Ops Console for WooCommerce`.
+3. Open `WooCommerce > Merchant Ops Console`.
 
 That is the main admin screen for the plugin.
 
@@ -180,19 +180,19 @@ define( 'WP_DEBUG_DISPLAY', false );
 Then:
 
 1. reload WP Admin
-2. open `WooCommerce > Woo Ops Console`
+2. open `WooCommerce > Merchant Ops Console`
 3. run triage actions
 4. generate summaries
 5. inspect `wp-content/debug.log`
 
-You want no notices, warnings, or fatal errors from Woo Ops Console.
+You want no notices, warnings, or fatal errors from Merchant Ops Console for WooCommerce.
 
 ## 11. Frontend and build validation
 
 From the plugin folder, the ideal validation pass is:
 
 ```powershell
-cd D:\Work\Plugins\woo-ops-console
+cd D:\Work\Plugins\merchant-ops-console
 npm install
 npm run lint
 npm run test
@@ -220,12 +220,15 @@ Open these first if something looks wrong:
 
 ## 13. Fastest practical workflow
 
-1. `cd D:\Work\Plugins\woo-ops-console`
+1. `cd D:\Work\Plugins\merchant-ops-console`
 2. `npm install`
 3. `npm run build`
 4. copy the plugin into local WordPress `wp-content/plugins`
 5. activate it
 6. install and activate WooCommerce
-7. open `WooCommerce > Woo Ops Console`
+7. open `WooCommerce > Merchant Ops Console`
 8. test `Exceptions`, `Bulk Triage`, `Risk Analysis`, and `Insights`
 9. create a few risky orders and test again with real WooCommerce data
+
+
+

@@ -2,12 +2,12 @@
 /**
  * Small HTML helpers for safe output.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole\Support;
+namespace MerchantOpsConsole\Support;
 
 final class Html {
 	/**

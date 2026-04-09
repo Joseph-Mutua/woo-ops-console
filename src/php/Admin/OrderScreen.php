@@ -2,17 +2,17 @@
 /**
  * Order screen enhancements for risk visibility.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole\Admin;
+namespace MerchantOpsConsole\Admin;
 
 use WC_Order;
-use WooOpsConsole\Contracts\ServiceContract;
-use WooOpsConsole\Support\Html;
-use WooOpsConsole\WooCommerce\OrderInsightsService;
+use MerchantOpsConsole\Contracts\ServiceContract;
+use MerchantOpsConsole\Support\Html;
+use MerchantOpsConsole\WooCommerce\OrderInsightsService;
 
 final class OrderScreen implements ServiceContract {
 	private OrderInsightsService $order_insights;
@@ -45,12 +45,12 @@ final class OrderScreen implements ServiceContract {
 			$updated_columns[ $key ] = $label;
 
 			if ( 'order_status' === $key ) {
-				$updated_columns['woo_ops_console_risk'] = __( 'Ops risk', 'woo-ops-console' );
+				$updated_columns['woo_ops_console_risk'] = __( 'Ops risk', 'merchant-ops-console' );
 			}
 		}
 
 		if ( ! isset( $updated_columns['woo_ops_console_risk'] ) ) {
-			$updated_columns['woo_ops_console_risk'] = __( 'Ops risk', 'woo-ops-console' );
+			$updated_columns['woo_ops_console_risk'] = __( 'Ops risk', 'merchant-ops-console' );
 		}
 
 		return $updated_columns;
@@ -104,10 +104,10 @@ final class OrderScreen implements ServiceContract {
 		}
 		?>
 		<style>
-			.woo-ops-console-risk-badge{display:inline-flex;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
-			.woo-ops-console-risk-badge--healthy{background:#dff6e8;color:#0a7a45}
-			.woo-ops-console-risk-badge--warning{background:#fff0da;color:#a55a06}
-			.woo-ops-console-risk-badge--critical{background:#fee2e2;color:#b42318}
+			.merchant-ops-console-risk-badge{display:inline-flex;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+			.merchant-ops-console-risk-badge--healthy{background:#dff6e8;color:#0a7a45}
+			.merchant-ops-console-risk-badge--warning{background:#fff0da;color:#a55a06}
+			.merchant-ops-console-risk-badge--critical{background:#fee2e2;color:#b42318}
 		</style>
 		<?php
 	}
@@ -119,15 +119,15 @@ final class OrderScreen implements ServiceContract {
 		$order_data = $this->order_insights->build_order_record( $order );
 		$class_name = Html::class_names(
 			array(
-				'woo-ops-console-risk-badge',
-				'woo-ops-console-risk-badge--' . sanitize_html_class( $order_data['riskTone'] ),
+				'merchant-ops-console-risk-badge',
+				'merchant-ops-console-risk-badge--' . sanitize_html_class( $order_data['riskTone'] ),
 			)
 		);
 
 		printf(
 			'<span class="%1$s">%2$s</span>',
 			esc_attr( $class_name ),
-			esc_html( sprintf( __( '%1$d · %2$s', 'woo-ops-console' ), $order_data['riskScore'], $order_data['riskLabel'] ) )
+			esc_html( sprintf( __( '%1$d · %2$s', 'merchant-ops-console' ), $order_data['riskScore'], $order_data['riskLabel'] ) )
 		);
 	}
 }

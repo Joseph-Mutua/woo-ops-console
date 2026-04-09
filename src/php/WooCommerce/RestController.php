@@ -2,16 +2,16 @@
 /**
  * REST API for dashboard refresh and triage actions.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole\WooCommerce;
+namespace MerchantOpsConsole\WooCommerce;
 
 use WP_REST_Request;
 use WP_REST_Response;
-use WooOpsConsole\Contracts\ServiceContract;
+use MerchantOpsConsole\Contracts\ServiceContract;
 
 final class RestController implements ServiceContract {
 	private OrderInsightsService $order_insights;
@@ -34,7 +34,7 @@ final class RestController implements ServiceContract {
 	 */
 	public function register_routes(): void {
 		register_rest_route(
-			'woo-ops-console/v1',
+			'merchant-ops-console/v1',
 			'/dashboard',
 			array(
 				'methods'             => 'GET',
@@ -44,7 +44,7 @@ final class RestController implements ServiceContract {
 		);
 
 		register_rest_route(
-			'woo-ops-console/v1',
+			'merchant-ops-console/v1',
 			'/triage',
 			array(
 				'methods'             => 'POST',
@@ -72,7 +72,7 @@ final class RestController implements ServiceContract {
 		);
 
 		register_rest_route(
-			'woo-ops-console/v1',
+			'merchant-ops-console/v1',
 			'/summary/(?P<order_id>\\d+)',
 			array(
 				'methods'             => 'POST',

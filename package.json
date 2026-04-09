@@ -1,10 +1,10 @@
 {
-  "name": "woo-ops-console",
+  "name": "merchant-ops-console",
   "private": true,
   "version": "0.1.0",
   "description": "Operational WooCommerce extension for order exceptions and triage workflows.",
   "license": "GPL-2.0-or-later",
-  "main": "woo-ops-console.php",
+  "main": "merchant-ops-console.php",
   "scripts": {
     "build": "wp-scripts build src/index.js --output-path=build",
     "start": "wp-scripts start src/index.js --output-path=build",
@@ -25,3 +25,4 @@
     "@wordpress/scripts": "^31.7.0"
   }
 }
+

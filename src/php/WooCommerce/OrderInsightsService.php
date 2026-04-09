@@ -2,12 +2,12 @@
 /**
  * Builds dashboard insights and order risk records.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole\WooCommerce;
+namespace MerchantOpsConsole\WooCommerce;
 
 use WC_Order;
 use WC_Order_Item_Product;
@@ -35,7 +35,7 @@ final class OrderInsightsService {
 				'actions' => array(
 					array(
 						'value' => 'mark-review',
-						'label' => __( 'Mark for review', 'woo-ops-console' ),
+						'label' => __( 'Mark for review', 'merchant-ops-console' ),
 					),
 				),
 			),
@@ -55,7 +55,7 @@ final class OrderInsightsService {
 		$record  = $this->build_order_record( $order );
 		$summary = sprintf(
 			/* translators: 1: order number, 2: issues, 3: risk score */
-			__( 'Order %1$s is flagged because of %2$s. Current fulfillment risk score: %3$d/100.', 'woo-ops-console' ),
+			__( 'Order %1$s is flagged because of %2$s. Current fulfillment risk score: %3$d/100.', 'merchant-ops-console' ),
 			$record['orderNumber'],
 			implode( ', ', wp_list_pluck( $record['issues'], 'label' ) ),
 			$record['riskScore']
@@ -83,19 +83,19 @@ final class OrderInsightsService {
 		return array(
 			'id'              => $order->get_id(),
 			'orderNumber'     => $order->get_order_number(),
-			'customer'        => trim( $order->get_formatted_billing_full_name() ) ?: __( 'Guest customer', 'woo-ops-console' ),
+			'customer'        => trim( $order->get_formatted_billing_full_name() ) ?: __( 'Guest customer', 'merchant-ops-console' ),
 			'createdAt'       => $order->get_date_created() ? $order->get_date_created()->date_i18n( DATE_ATOM ) : '',
 			'modifiedAt'      => $order->get_date_modified() ? $order->get_date_modified()->date_i18n( DATE_ATOM ) : '',
 			'status'          => wc_get_order_status_name( $order->get_status() ),
 			'currency'        => $order->get_currency(),
 			'total'           => (float) $order->get_total(),
 			'riskScore'       => $score,
-			'riskLabel'       => $score >= 70 ? __( 'High', 'woo-ops-console' ) : ( $score >= 40 ? __( 'Watch', 'woo-ops-console' ) : __( 'Stable', 'woo-ops-console' ) ),
+			'riskLabel'       => $score >= 70 ? __( 'High', 'merchant-ops-console' ) : ( $score >= 40 ? __( 'Watch', 'merchant-ops-console' ) : __( 'Stable', 'merchant-ops-console' ) ),
 			'riskTone'        => $score >= 70 ? 'critical' : ( $score >= 40 ? 'warning' : 'healthy' ),
 			'issueCount'      => count( $issues ),
 			'issues'          => $issues,
 			'issueKeys'       => wp_list_pluck( $issues, 'key' ),
-			'paymentMethod'   => $order->get_payment_method_title() ?: __( 'Manual', 'woo-ops-console' ),
+			'paymentMethod'   => $order->get_payment_method_title() ?: __( 'Manual', 'merchant-ops-console' ),
 			'paymentStatus'   => $this->get_payment_state( $order ),
 			'shippingStatus'  => $this->get_shipping_state( $order ),
 			'triageStatus'    => sanitize_key( (string) $order->get_meta( '_woo_ops_console_triage_status', true ) ) ?: 'untriaged',
@@ -169,8 +169,8 @@ final class OrderInsightsService {
 		if ( in_array( $order->get_status(), array( 'failed', 'pending' ), true ) ) {
 			$issues[] = array(
 				'key'         => 'failed-payment',
-				'label'       => __( 'Failed payment', 'woo-ops-console' ),
-				'description' => __( 'Payment has not cleared and the order still requires intervention.', 'woo-ops-console' ),
+				'label'       => __( 'Failed payment', 'merchant-ops-console' ),
+				'description' => __( 'Payment has not cleared and the order still requires intervention.', 'merchant-ops-console' ),
 				'weight'      => 36,
 			);
 		}
@@ -178,8 +178,8 @@ final class OrderInsightsService {
 		if ( $this->get_payment_retry_count( $order ) >= 3 ) {
 			$issues[] = array(
 				'key'         => 'retry-behavior',
-				'label'       => __( 'Suspicious retry behavior', 'woo-ops-console' ),
-				'description' => __( 'The order shows repeated payment attempts and may need manual review.', 'woo-ops-console' ),
+				'label'       => __( 'Suspicious retry behavior', 'merchant-ops-console' ),
+				'description' => __( 'The order shows repeated payment attempts and may need manual review.', 'merchant-ops-console' ),
 				'weight'      => 18,
 			);
 		}
@@ -187,8 +187,8 @@ final class OrderInsightsService {
 		if ( $this->is_long_unfulfilled( $order ) ) {
 			$issues[] = array(
 				'key'         => 'long-unfulfilled',
-				'label'       => __( 'Long-unfulfilled order', 'woo-ops-console' ),
-				'description' => __( 'The order is still waiting for fulfillment beyond the expected threshold.', 'woo-ops-console' ),
+				'label'       => __( 'Long-unfulfilled order', 'merchant-ops-console' ),
+				'description' => __( 'The order is still waiting for fulfillment beyond the expected threshold.', 'merchant-ops-console' ),
 				'weight'      => 22,
 			);
 		}
@@ -196,8 +196,8 @@ final class OrderInsightsService {
 		if ( $this->has_missing_shipping_details( $order ) ) {
 			$issues[] = array(
 				'key'         => 'missing-shipping',
-				'label'       => __( 'Missing shipping details', 'woo-ops-console' ),
-				'description' => __( 'Critical shipping fields are incomplete for a shippable order.', 'woo-ops-console' ),
+				'label'       => __( 'Missing shipping details', 'merchant-ops-console' ),
+				'description' => __( 'Critical shipping fields are incomplete for a shippable order.', 'merchant-ops-console' ),
 				'weight'      => 14,
 			);
 		}
@@ -205,8 +205,8 @@ final class OrderInsightsService {
 		if ( $this->has_refund_anomaly( $order ) ) {
 			$issues[] = array(
 				'key'         => 'refund-anomaly',
-				'label'       => __( 'Refund anomaly', 'woo-ops-console' ),
-				'description' => __( 'The refund profile is unusually high or fragmented for this order.', 'woo-ops-console' ),
+				'label'       => __( 'Refund anomaly', 'merchant-ops-console' ),
+				'description' => __( 'The refund profile is unusually high or fragmented for this order.', 'merchant-ops-console' ),
 				'weight'      => 28,
 			);
 		}
@@ -214,8 +214,8 @@ final class OrderInsightsService {
 		if ( $this->estimate_customer_edits( $order ) >= 2 ) {
 			$issues[] = array(
 				'key'         => 'repeated-edits',
-				'label'       => __( 'Repeated customer edits', 'woo-ops-console' ),
-				'description' => __( 'Order details have changed multiple times after placement.', 'woo-ops-console' ),
+				'label'       => __( 'Repeated customer edits', 'merchant-ops-console' ),
+				'description' => __( 'Order details have changed multiple times after placement.', 'merchant-ops-console' ),
 				'weight'      => 12,
 			);
 		}
@@ -223,8 +223,8 @@ final class OrderInsightsService {
 		if ( $this->has_inventory_mismatch( $order ) ) {
 			$issues[] = array(
 				'key'         => 'inventory-mismatch',
-				'label'       => __( 'Inventory mismatch', 'woo-ops-console' ),
-				'description' => __( 'At least one line item points to constrained or missing stock.', 'woo-ops-console' ),
+				'label'       => __( 'Inventory mismatch', 'merchant-ops-console' ),
+				'description' => __( 'At least one line item points to constrained or missing stock.', 'merchant-ops-console' ),
 				'weight'      => 22,
 			);
 		}
@@ -246,27 +246,27 @@ final class OrderInsightsService {
 
 		return array(
 			array(
-				'label' => __( 'Orders at risk', 'woo-ops-console' ),
+				'label' => __( 'Orders at risk', 'merchant-ops-console' ),
 				'value' => (string) $high_risk,
-				'delta' => __( 'Prioritize same-day review', 'woo-ops-console' ),
+				'delta' => __( 'Prioritize same-day review', 'merchant-ops-console' ),
 				'tone'  => 'critical',
 			),
 			array(
-				'label' => __( 'Pending too long', 'woo-ops-console' ),
+				'label' => __( 'Pending too long', 'merchant-ops-console' ),
 				'value' => (string) $pending_too_long,
-				'delta' => __( 'Fulfillment drag across aging orders', 'woo-ops-console' ),
+				'delta' => __( 'Fulfillment drag across aging orders', 'merchant-ops-console' ),
 				'tone'  => 'warning',
 			),
 			array(
-				'label' => __( 'Refund spike', 'woo-ops-console' ),
+				'label' => __( 'Refund spike', 'merchant-ops-console' ),
 				'value' => (string) $refund_spike,
-				'delta' => __( 'Watch post-purchase friction', 'woo-ops-console' ),
+				'delta' => __( 'Watch post-purchase friction', 'merchant-ops-console' ),
 				'tone'  => 'warning',
 			),
 			array(
-				'label' => __( 'Failed checkout trend', 'woo-ops-console' ),
+				'label' => __( 'Failed checkout trend', 'merchant-ops-console' ),
 				'value' => (string) $failed_checkout,
-				'delta' => __( 'Payment recovery needed', 'woo-ops-console' ),
+				'delta' => __( 'Payment recovery needed', 'merchant-ops-console' ),
 				'tone'  => 'positive',
 			),
 		);
@@ -277,14 +277,14 @@ final class OrderInsightsService {
 	 */
 	private function get_payment_state( WC_Order $order ): string {
 		if ( $order->is_paid() ) {
-			return __( 'Confirmed', 'woo-ops-console' );
+			return __( 'Confirmed', 'merchant-ops-console' );
 		}
 
 		if ( 'failed' === $order->get_status() ) {
-			return __( 'Failed', 'woo-ops-console' );
+			return __( 'Failed', 'merchant-ops-console' );
 		}
 
-		return __( 'Awaiting payment', 'woo-ops-console' );
+		return __( 'Awaiting payment', 'merchant-ops-console' );
 	}
 
 	/**
@@ -292,14 +292,14 @@ final class OrderInsightsService {
 	 */
 	private function get_shipping_state( WC_Order $order ): string {
 		if ( 'completed' === $order->get_status() ) {
-			return __( 'Completed', 'woo-ops-console' );
+			return __( 'Completed', 'merchant-ops-console' );
 		}
 
 		if ( in_array( $order->get_status(), array( 'processing', 'on-hold' ), true ) ) {
-			return __( 'In flight', 'woo-ops-console' );
+			return __( 'In flight', 'merchant-ops-console' );
 		}
 
-		return __( 'Not started', 'woo-ops-console' );
+		return __( 'Not started', 'merchant-ops-console' );
 	}
 
 	/**

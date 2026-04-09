@@ -2,12 +2,12 @@
 /**
  * PSR-4 style autoloader for the plugin namespace.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole;
+namespace MerchantOpsConsole;
 
 final class Autoloader {
 	/**
@@ -18,7 +18,7 @@ final class Autoloader {
 	}
 
 	/**
-	 * Loads classes from the WooOpsConsole namespace.
+	 * Loads classes from the MerchantOpsConsole namespace.
 	 */
 	private static function autoload( string $class ): void {
 		$prefix = __NAMESPACE__ . '\\';
@@ -29,7 +29,7 @@ final class Autoloader {
 
 		$relative_class = substr( $class, strlen( $prefix ) );
 		$relative_path  = str_replace( '\\', DIRECTORY_SEPARATOR, $relative_class );
-		$file_path      = WOO_OPS_CONSOLE_PATH . 'src/php/' . $relative_path . '.php';
+		$file_path      = MERCHANT_OPS_CONSOLE_PATH . 'src/php/' . $relative_path . '.php';
 
 		if ( is_readable( $file_path ) ) {
 			require_once $file_path;

@@ -30,3 +30,4 @@ export function getToneLabel( tone ) {
 
 	return 'Stable';
 }
+

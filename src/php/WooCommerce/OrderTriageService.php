@@ -2,12 +2,12 @@
 /**
  * Bulk triage actions for flagged WooCommerce orders.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole\WooCommerce;
+namespace MerchantOpsConsole\WooCommerce;
 
 use WC_Order;
 

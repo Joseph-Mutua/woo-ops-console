@@ -2,7 +2,7 @@
 /**
  * Clean up plugin metadata on uninstall.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
@@ -24,3 +24,4 @@ $meta_keys = array(
 foreach ( $meta_keys as $meta_key ) {
 	$wpdb->delete( $wpdb->postmeta, array( 'meta_key' => $meta_key ), array( '%s' ) );
 }
+

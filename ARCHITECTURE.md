@@ -4,7 +4,7 @@
 
 ### Plugin bootstrap
 
-`woo-ops-console.php` defines plugin constants, registers the autoloader, and boots the plugin orchestrator.
+`merchant-ops-console.php` defines plugin constants, registers the autoloader, and boots the plugin orchestrator.
 
 ### Service orchestration
 
@@ -53,3 +53,4 @@ The current design leaves room for:
 - more advanced SLA policies
 - external AI summary providers through `woo_ops_console_issue_summary`
 - richer order screen integrations such as metaboxes or action buttons
+

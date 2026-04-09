@@ -2,12 +2,12 @@
 /**
  * Service contract for plugin bootstrapping.
  *
- * @package WooOpsConsole
+ * @package MerchantOpsConsole
  */
 
 declare( strict_types=1 );
 
-namespace WooOpsConsole\Contracts;
+namespace MerchantOpsConsole\Contracts;
 
 interface ServiceContract {
 	/**

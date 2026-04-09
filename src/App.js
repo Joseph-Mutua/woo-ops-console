@@ -7,34 +7,34 @@ import { formatCurrency, formatDate } from './utils/format';
 const NAV_ITEMS = [
 	{
 		value: 'exceptions',
-		label: __( 'Exceptions', 'woo-ops-console' ),
+		label: __( 'Exceptions', 'merchant-ops-console' ),
 		icon: 'warning',
 	},
 	{
 		value: 'bulk-triage',
-		label: __( 'Bulk Triage', 'woo-ops-console' ),
+		label: __( 'Bulk Triage', 'merchant-ops-console' ),
 		icon: 'list',
 	},
 	{
 		value: 'risk-analysis',
-		label: __( 'Risk Analysis', 'woo-ops-console' ),
+		label: __( 'Risk Analysis', 'merchant-ops-console' ),
 		icon: 'shield',
 	},
 	{
 		value: 'insights',
-		label: __( 'Insights', 'woo-ops-console' ),
+		label: __( 'Insights', 'merchant-ops-console' ),
 		icon: 'chart',
 	},
 ];
 
 const ISSUE_ACTIONS = {
-	'failed-payment': __( 'Retry payment recovery', 'woo-ops-console' ),
-	'retry-behavior': __( 'Review fraud signal', 'woo-ops-console' ),
-	'long-unfulfilled': __( 'Escalate fulfillment', 'woo-ops-console' ),
-	'missing-shipping': __( 'Request shipping details', 'woo-ops-console' ),
-	'refund-anomaly': __( 'Audit refund pattern', 'woo-ops-console' ),
-	'repeated-edits': __( 'Review order edits', 'woo-ops-console' ),
-	'inventory-mismatch': __( 'Resolve stock conflict', 'woo-ops-console' ),
+	'failed-payment': __( 'Retry payment recovery', 'merchant-ops-console' ),
+	'retry-behavior': __( 'Review fraud signal', 'merchant-ops-console' ),
+	'long-unfulfilled': __( 'Escalate fulfillment', 'merchant-ops-console' ),
+	'missing-shipping': __( 'Request shipping details', 'merchant-ops-console' ),
+	'refund-anomaly': __( 'Audit refund pattern', 'merchant-ops-console' ),
+	'repeated-edits': __( 'Review order edits', 'merchant-ops-console' ),
+	'inventory-mismatch': __( 'Resolve stock conflict', 'merchant-ops-console' ),
 };
 
 function SymbolIcon( { name, className = '' } ) {
@@ -247,7 +247,7 @@ function getMetricMeta( label, tone ) {
 
 	if ( normalizedLabel.includes( 'pending' ) ) {
 		return {
-			badge: __( 'Slow', 'woo-ops-console' ),
+			badge: __( 'Slow', 'merchant-ops-console' ),
 			icon: 'hourglass',
 			iconTone: 'warning',
 		};
@@ -255,7 +255,7 @@ function getMetricMeta( label, tone ) {
 
 	if ( normalizedLabel.includes( 'refund' ) ) {
 		return {
-			badge: __( 'Watch', 'woo-ops-console' ),
+			badge: __( 'Watch', 'merchant-ops-console' ),
 			icon: 'payments',
 			iconTone: 'primary',
 		};
@@ -263,7 +263,7 @@ function getMetricMeta( label, tone ) {
 
 	if ( normalizedLabel.includes( 'checkout' ) ) {
 		return {
-			badge: __( 'Stable', 'woo-ops-console' ),
+			badge: __( 'Stable', 'merchant-ops-console' ),
 			icon: 'checkout',
 			iconTone: 'neutral',
 		};
@@ -272,8 +272,8 @@ function getMetricMeta( label, tone ) {
 	return {
 		badge:
 			'critical' === tone
-				? __( 'Priority', 'woo-ops-console' )
-				: __( 'Watch', 'woo-ops-console' ),
+				? __( 'Priority', 'merchant-ops-console' )
+				: __( 'Watch', 'merchant-ops-console' ),
 		icon: 'alert',
 		iconTone: 'critical' === tone ? 'critical' : 'warning',
 	};
@@ -305,7 +305,7 @@ function getIssueIcon( issueKey ) {
 }
 
 function getActionLabel( issueKey ) {
-	return ISSUE_ACTIONS[ issueKey ] || __( 'Review issue', 'woo-ops-console' );
+	return ISSUE_ACTIONS[ issueKey ] || __( 'Review issue', 'merchant-ops-console' );
 }
 
 function getMetricLinkTarget( label ) {
@@ -330,22 +330,22 @@ function getOrderSignals( order ) {
 		{
 			label:
 				'Confirmed' === order.paymentStatus
-					? __( 'Payment confirmed', 'woo-ops-console' )
-					: __( 'Payment unsettled', 'woo-ops-console' ),
+					? __( 'Payment confirmed', 'merchant-ops-console' )
+					: __( 'Payment unsettled', 'merchant-ops-console' ),
 			tone: 'Confirmed' === order.paymentStatus ? 'healthy' : 'critical',
 		},
 		{
 			label:
 				'Completed' === order.shippingStatus
-					? __( 'Shipping complete', 'woo-ops-console' )
-					: __( 'Shipping delay', 'woo-ops-console' ),
+					? __( 'Shipping complete', 'merchant-ops-console' )
+					: __( 'Shipping delay', 'merchant-ops-console' ),
 			tone: 'Completed' === order.shippingStatus ? 'healthy' : 'warning',
 		},
 		{
 			label:
 				order.customerEdits >= 2
-					? __( 'Repeated customer edits', 'woo-ops-console' )
-					: __( 'Edits stable', 'woo-ops-console' ),
+					? __( 'Repeated customer edits', 'merchant-ops-console' )
+					: __( 'Edits stable', 'merchant-ops-console' ),
 			tone: order.customerEdits >= 2 ? 'warning' : 'healthy',
 		},
 	];
@@ -353,22 +353,22 @@ function getOrderSignals( order ) {
 
 function getIssueSummaryLabel( issueKey ) {
 	if ( 'failed-payment' === issueKey ) {
-		return __( 'Payment Failure', 'woo-ops-console' );
+		return __( 'Payment Failure', 'merchant-ops-console' );
 	}
 
 	if ( 'retry-behavior' === issueKey ) {
-		return __( 'High Risk', 'woo-ops-console' );
+		return __( 'High Risk', 'merchant-ops-console' );
 	}
 
 	if ( 'inventory-mismatch' === issueKey ) {
-		return __( 'Inventory Conflict', 'woo-ops-console' );
+		return __( 'Inventory Conflict', 'merchant-ops-console' );
 	}
 
 	if ( 'missing-shipping' === issueKey ) {
-		return __( 'Shipping Detail Missing', 'woo-ops-console' );
+		return __( 'Shipping Detail Missing', 'merchant-ops-console' );
 	}
 
-	return __( 'Needs Review', 'woo-ops-console' );
+	return __( 'Needs Review', 'merchant-ops-console' );
 }
 
 function ScreenHeader( { actions, description, eyebrow, title } ) {
@@ -455,13 +455,13 @@ export function App( { config } ) {
 
 		try {
 			const nextDashboard = await apiFetch( {
-				path: '/woo-ops-console/v1/dashboard',
+				path: '/merchant-ops-console/v1/dashboard',
 			} );
 			setDashboard( nextDashboard );
 			setSelectedOrderIds( [] );
 			setStatusMessage(
 				config.labels?.refreshed ||
-					__( 'Dashboard refreshed.', 'woo-ops-console' )
+					__( 'Dashboard refreshed.', 'merchant-ops-console' )
 			);
 		} catch ( error ) {
 			setStatusMessage( error.message );
@@ -502,10 +502,10 @@ export function App( { config } ) {
 		const anchor = document.createElement( 'a' );
 
 		anchor.href = url;
-		anchor.download = 'woo-ops-console-flagged-orders.csv';
+		anchor.download = 'merchant-ops-console-flagged-orders.csv';
 		anchor.click();
 		URL.revokeObjectURL( url );
-		setStatusMessage( __( 'Flagged orders exported.', 'woo-ops-console' ) );
+		setStatusMessage( __( 'Flagged orders exported.', 'merchant-ops-console' ) );
 	};
 
 	const applyTriage = async () => {
@@ -513,7 +513,7 @@ export function App( { config } ) {
 			setStatusMessage(
 				__(
 					'Select at least one order before running triage actions.',
-					'woo-ops-console'
+					'merchant-ops-console'
 				)
 			);
 			return;
@@ -523,7 +523,7 @@ export function App( { config } ) {
 
 		try {
 			const response = await apiFetch( {
-				path: '/woo-ops-console/v1/triage',
+				path: '/merchant-ops-console/v1/triage',
 				method: 'POST',
 				data: {
 					action: triageAction,
@@ -536,7 +536,7 @@ export function App( { config } ) {
 			setDashboard( response.dashboard );
 			setStatusMessage(
 				config.labels?.triaged ||
-					__( 'Orders updated.', 'woo-ops-console' )
+					__( 'Orders updated.', 'merchant-ops-console' )
 			);
 			setInternalNote( '' );
 			setSelectedOrderIds( [] );
@@ -552,12 +552,12 @@ export function App( { config } ) {
 			...current,
 			[ orderId ]:
 				current[ orderId ] ||
-				__( 'Generating explanation�', 'woo-ops-console' ),
+				__( 'Generating explanation�', 'merchant-ops-console' ),
 		} ) );
 
 		try {
 			const response = await apiFetch( {
-				path: `/woo-ops-console/v1/summary/${ orderId }`,
+				path: `/merchant-ops-console/v1/summary/${ orderId }`,
 				method: 'POST',
 			} );
 
@@ -581,7 +581,7 @@ export function App( { config } ) {
 				: [ ...currentIds, orderId ]
 		);
 		setStatusMessage(
-			__( 'Order added to the bulk triage selection.', 'woo-ops-console' )
+			__( 'Order added to the bulk triage selection.', 'merchant-ops-console' )
 		);
 	};
 
@@ -593,7 +593,7 @@ export function App( { config } ) {
 				type="button"
 			>
 				<SymbolIcon name="export" />
-				<span>{ __( 'Export Report', 'woo-ops-console' ) }</span>
+				<span>{ __( 'Export Report', 'merchant-ops-console' ) }</span>
 			</button>
 			<button
 				className="woo-ops-primary-button"
@@ -617,7 +617,7 @@ export function App( { config } ) {
 					}
 					placeholder={ __(
 						'Search by order, customer, issue, or location�',
-						'woo-ops-console'
+						'merchant-ops-console'
 					) }
 					type="search"
 					value={ searchTerm }
@@ -631,7 +631,7 @@ export function App( { config } ) {
 					onClick={ () => setIssueFilter( '' ) }
 					type="button"
 				>
-					{ __( 'All', 'woo-ops-console' ) }
+					{ __( 'All', 'merchant-ops-console' ) }
 				</button>
 				{ ( dashboard.issueTypes || [] ).map( ( issue ) => (
 					<button
@@ -686,7 +686,7 @@ export function App( { config } ) {
 								type="button"
 							>
 								<span>
-									{ __( 'View All', 'woo-ops-console' ) }
+									{ __( 'View All', 'merchant-ops-console' ) }
 								</span>
 								<SymbolIcon name="chevron-right" />
 							</button>
@@ -701,24 +701,24 @@ export function App( { config } ) {
 		<>
 			<ScreenHeader
 				actions={ renderHeaderActions(
-					__( 'Run Sync', 'woo-ops-console' )
+					__( 'Run Sync', 'merchant-ops-console' )
 				) }
 				description={ __(
 					'Surface the orders that need intervention first, then hand them off into fast triage workflows.',
-					'woo-ops-console'
+					'merchant-ops-console'
 				) }
-				eyebrow={ __( 'Operational Ledger', 'woo-ops-console' ) }
-				title={ __( 'Order Exceptions', 'woo-ops-console' ) }
+				eyebrow={ __( 'Operational Ledger', 'merchant-ops-console' ) }
+				title={ __( 'Order Exceptions', 'merchant-ops-console' ) }
 			/>
 			{ renderMetricCards() }
 			<section className="woo-ops-section-stack">
 				<div className="woo-ops-section-heading">
 					<div>
-						<h3>{ __( 'Needs Attention', 'woo-ops-console' ) }</h3>
+						<h3>{ __( 'Needs Attention', 'merchant-ops-console' ) }</h3>
 						<p>
 							{ __(
 								'Exception cards prioritize payment, fulfillment, refund, and inventory friction in one feed.',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</p>
 					</div>
@@ -726,12 +726,12 @@ export function App( { config } ) {
 						<span className="woo-ops-legend tone-critical">
 							<span className="woo-ops-legend-dot" />
 							{ criticalCount }{ ' ' }
-							{ __( 'Critical', 'woo-ops-console' ) }
+							{ __( 'Critical', 'merchant-ops-console' ) }
 						</span>
 						<span className="woo-ops-legend tone-warning">
 							<span className="woo-ops-legend-dot" />
 							{ warningCount }{ ' ' }
-							{ __( 'Warning', 'woo-ops-console' ) }
+							{ __( 'Warning', 'merchant-ops-console' ) }
 						</span>
 					</div>
 				</div>
@@ -769,11 +769,11 @@ export function App( { config } ) {
 												{ 'critical' === order.riskTone
 													? __(
 															'Critical',
-															'woo-ops-console'
+															'merchant-ops-console'
 													  )
 													: __(
 															'Warning',
-															'woo-ops-console'
+															'merchant-ops-console'
 													  ) }
 											</span>
 										</div>
@@ -781,7 +781,7 @@ export function App( { config } ) {
 											{ primaryIssue?.label ||
 												__(
 													'Operational exception',
-													'woo-ops-console'
+													'merchant-ops-console'
 												) }
 										</h4>
 										<p>
@@ -789,7 +789,7 @@ export function App( { config } ) {
 											{ primaryIssue?.description ||
 												__(
 													'Needs manual attention before fulfillment proceeds.',
-													'woo-ops-console'
+													'merchant-ops-console'
 												) }
 										</p>
 										<div className="woo-ops-meta-row">
@@ -802,7 +802,7 @@ export function App( { config } ) {
 												{ order.location ||
 													__(
 														'Shipping location pending',
-														'woo-ops-console'
+														'merchant-ops-console'
 													) }
 											</span>
 											<span>
@@ -834,11 +834,11 @@ export function App( { config } ) {
 										{ isSelected
 											? __(
 													'Selected',
-													'woo-ops-console'
+													'merchant-ops-console'
 											  )
 											: __(
 													'Mark for Review',
-													'woo-ops-console'
+													'merchant-ops-console'
 											  ) }
 									</button>
 									<button
@@ -875,7 +875,7 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'Load More Exceptions',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</button>
@@ -896,7 +896,7 @@ export function App( { config } ) {
 							type="button"
 						>
 							<SymbolIcon name="note" />
-							<span>{ __( 'Add Note', 'woo-ops-console' ) }</span>
+							<span>{ __( 'Add Note', 'merchant-ops-console' ) }</span>
 						</button>
 						<button
 							className="woo-ops-secondary-button"
@@ -905,7 +905,7 @@ export function App( { config } ) {
 						>
 							<SymbolIcon name="export" />
 							<span>
-								{ __( 'Export Selected', 'woo-ops-console' ) }
+								{ __( 'Export Selected', 'merchant-ops-console' ) }
 							</span>
 						</button>
 						<button
@@ -916,17 +916,17 @@ export function App( { config } ) {
 						>
 							<SymbolIcon name="rule" />
 							<span>
-								{ __( 'Mark for Review', 'woo-ops-console' ) }
+								{ __( 'Mark for Review', 'merchant-ops-console' ) }
 							</span>
 						</button>
 					</>
 				}
 				description={ __(
 					'Execute mass operations across the current queue while preserving a clear audit trail for support, fulfillment, and finance teams.',
-					'woo-ops-console'
+					'merchant-ops-console'
 				) }
-				eyebrow={ __( 'Operational Ledger', 'woo-ops-console' ) }
-				title={ __( 'Bulk Triage', 'woo-ops-console' ) }
+				eyebrow={ __( 'Operational Ledger', 'merchant-ops-console' ) }
+				title={ __( 'Bulk Triage', 'merchant-ops-console' ) }
 			/>
 			{ renderFilterShell() }
 			<section className="woo-ops-table-card">
@@ -946,19 +946,19 @@ export function App( { config } ) {
 									/>
 								</th>
 								<th>
-									{ __( 'Order Detail', 'woo-ops-console' ) }
+									{ __( 'Order Detail', 'merchant-ops-console' ) }
 								</th>
 								<th>
-									{ __( 'Created Date', 'woo-ops-console' ) }
+									{ __( 'Created Date', 'merchant-ops-console' ) }
 								</th>
 								<th>
-									{ __( 'Primary Issue', 'woo-ops-console' ) }
+									{ __( 'Primary Issue', 'merchant-ops-console' ) }
 								</th>
 								<th>
-									{ __( 'Risk Score', 'woo-ops-console' ) }
+									{ __( 'Risk Score', 'merchant-ops-console' ) }
 								</th>
 								<th className="is-right">
-									{ __( 'Actions', 'woo-ops-console' ) }
+									{ __( 'Actions', 'merchant-ops-console' ) }
 								</th>
 							</tr>
 						</thead>
@@ -1066,18 +1066,18 @@ export function App( { config } ) {
 			<div className="woo-ops-two-column-grid">
 				<section className="woo-ops-panel-card">
 					<div className="woo-ops-panel-head">
-						<p>{ __( 'Triage Workflow', 'woo-ops-console' ) }</p>
+						<p>{ __( 'Triage Workflow', 'merchant-ops-console' ) }</p>
 						<h3>
 							{ __(
 								'Apply action to the current selection',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</h3>
 					</div>
 					<div className="woo-ops-form-grid">
 						<div>
 							<span className="woo-ops-form-label">
-								{ __( 'Selected orders', 'woo-ops-console' ) }
+								{ __( 'Selected orders', 'merchant-ops-console' ) }
 							</span>
 							<div className="woo-ops-static-field">
 								<strong>{ selectedOrderIds.length }</strong>
@@ -1085,7 +1085,7 @@ export function App( { config } ) {
 						</div>
 						<label htmlFor="woo-ops-triage-action">
 							<span className="woo-ops-form-label">
-								{ __( 'Action', 'woo-ops-console' ) }
+								{ __( 'Action', 'merchant-ops-console' ) }
 							</span>
 							<select
 								id="woo-ops-triage-action"
@@ -1109,7 +1109,7 @@ export function App( { config } ) {
 							htmlFor="woo-ops-internal-note"
 						>
 							<span className="woo-ops-form-label">
-								{ __( 'Internal note', 'woo-ops-console' ) }
+								{ __( 'Internal note', 'merchant-ops-console' ) }
 							</span>
 							<textarea
 								id="woo-ops-internal-note"
@@ -1118,7 +1118,7 @@ export function App( { config } ) {
 								}
 								placeholder={ __(
 									'Add context for support, fulfillment, or finance teams.',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 								value={ internalNote }
 							/>
@@ -1133,7 +1133,7 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'Apply triage action',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</button>
@@ -1141,11 +1141,11 @@ export function App( { config } ) {
 				</section>
 				<section className="woo-ops-panel-card">
 					<div className="woo-ops-panel-head">
-						<p>{ __( 'Queue Snapshot', 'woo-ops-console' ) }</p>
+						<p>{ __( 'Queue Snapshot', 'merchant-ops-console' ) }</p>
 						<h3>
 							{ __(
 								'Selection context and operational pressure',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</h3>
 					</div>
@@ -1155,7 +1155,7 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'orders in the current filtered queue',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</li>
@@ -1166,7 +1166,7 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'at-risk revenue in the current view',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</li>
@@ -1175,7 +1175,7 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'orders currently staged for triage',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</li>
@@ -1189,23 +1189,23 @@ export function App( { config } ) {
 		<>
 			<ScreenHeader
 				actions={ renderHeaderActions(
-					__( 'Refresh Signals', 'woo-ops-console' )
+					__( 'Refresh Signals', 'merchant-ops-console' )
 				) }
 				description={ __(
 					'Use lightweight order health scoring to understand why each order is risky before the team takes action.',
-					'woo-ops-console'
+					'merchant-ops-console'
 				) }
-				eyebrow={ __( 'Operational Ledger', 'woo-ops-console' ) }
-				title={ __( 'Fulfillment Risk Analysis', 'woo-ops-console' ) }
+				eyebrow={ __( 'Operational Ledger', 'merchant-ops-console' ) }
+				title={ __( 'Fulfillment Risk Analysis', 'merchant-ops-console' ) }
 			/>
 			<div className="woo-ops-two-column-grid">
 				<section className="woo-ops-panel-card">
 					<div className="woo-ops-panel-head">
-						<p>{ __( 'Risk Drivers', 'woo-ops-console' ) }</p>
+						<p>{ __( 'Risk Drivers', 'merchant-ops-console' ) }</p>
 						<h3>
 							{ __(
 								'Signals powering the order health score',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</h3>
 					</div>
@@ -1255,11 +1255,11 @@ export function App( { config } ) {
 				</section>
 				<section className="woo-ops-panel-card">
 					<div className="woo-ops-panel-head">
-						<p>{ __( 'Risk Summary', 'woo-ops-console' ) }</p>
+						<p>{ __( 'Risk Summary', 'merchant-ops-console' ) }</p>
 						<h3>
 							{ __(
 								'Current distribution across the queue',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</h3>
 					</div>
@@ -1269,7 +1269,7 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'orders in critical state',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</li>
@@ -1278,7 +1278,7 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'orders currently on watch',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</li>
@@ -1291,7 +1291,7 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'orders currently stable but still surfaced',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</li>
@@ -1316,23 +1316,23 @@ export function App( { config } ) {
 		<>
 			<ScreenHeader
 				actions={ renderHeaderActions(
-					__( 'Refresh Insights', 'woo-ops-console' )
+					__( 'Refresh Insights', 'merchant-ops-console' )
 				) }
 				description={ __(
 					'Keep merchant operators aligned on the pressure points inside the queue and show how AI summaries stay advisory, not autonomous.',
-					'woo-ops-console'
+					'merchant-ops-console'
 				) }
-				eyebrow={ __( 'Operational Ledger', 'woo-ops-console' ) }
-				title={ __( 'Merchant Insights', 'woo-ops-console' ) }
+				eyebrow={ __( 'Operational Ledger', 'merchant-ops-console' ) }
+				title={ __( 'Merchant Insights', 'merchant-ops-console' ) }
 			/>
 			<div className="woo-ops-two-column-grid">
 				<section className="woo-ops-panel-card">
 					<div className="woo-ops-panel-head">
-						<p>{ __( 'Executive Snapshot', 'woo-ops-console' ) }</p>
+						<p>{ __( 'Executive Snapshot', 'merchant-ops-console' ) }</p>
 						<h3>
 							{ __(
 								'What the merchant team should notice first',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</h3>
 					</div>
@@ -1342,7 +1342,7 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'flagged orders in the current view',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</li>
@@ -1353,24 +1353,24 @@ export function App( { config } ) {
 							<span>
 								{ __(
 									'revenue currently tied to flagged orders',
-									'woo-ops-console'
+									'merchant-ops-console'
 								) }
 							</span>
 						</li>
 						<li>
 							<strong>
 								{ issueBreakdown[ 0 ]?.label ||
-									__( 'No issue spikes', 'woo-ops-console' ) }
+									__( 'No issue spikes', 'merchant-ops-console' ) }
 							</strong>
 							<span>
 								{ issueBreakdown[ 0 ]
 									? `${ issueBreakdown[ 0 ].count } ${ __(
 											'orders impacted',
-											'woo-ops-console'
+											'merchant-ops-console'
 									  ) }`
 									: __(
 											'Current queue is balanced.',
-											'woo-ops-console'
+											'merchant-ops-console'
 									  ) }
 							</span>
 						</li>
@@ -1392,13 +1392,13 @@ export function App( { config } ) {
 						<p>
 							{ __(
 								'AI-Assisted Issue Summary',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</p>
 						<h3>
 							{ __(
 								'Keep humans in control',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</h3>
 					</div>
@@ -1406,19 +1406,19 @@ export function App( { config } ) {
 						<li>
 							{ __(
 								'Summaries explain why an order is flagged without auto-resolving it.',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</li>
 						<li>
 							{ __(
 								'The final decision still belongs to the merchant operations team.',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</li>
 						<li>
 							{ __(
 								'A PHP filter allows external AI providers to replace the default explanation safely.',
-								'woo-ops-console'
+								'merchant-ops-console'
 							) }
 						</li>
 					</ul>
@@ -1441,7 +1441,7 @@ export function App( { config } ) {
 										<span>
 											{ __(
 												'Generate',
-												'woo-ops-console'
+												'merchant-ops-console'
 											) }
 										</span>
 									</button>
@@ -1451,7 +1451,7 @@ export function App( { config } ) {
 										order.aiSummary ||
 										__(
 											'No summary generated yet.',
-											'woo-ops-console'
+											'merchant-ops-console'
 										) }
 								</p>
 							</article>
@@ -1475,7 +1475,7 @@ export function App( { config } ) {
 	return (
 		<div className="woo-ops-app-shell">
 			<aside className="woo-ops-sidebar">
-				<div className="woo-ops-brand">WooOps</div>
+				<div className="woo-ops-brand">MerchantOps</div>
 				<nav className="woo-ops-sidebar-nav">
 					{ NAV_ITEMS.map( ( item ) => (
 						<button
@@ -1495,10 +1495,10 @@ export function App( { config } ) {
 					<div className="woo-ops-profile-avatar">WO</div>
 					<div>
 						<strong>
-							{ __( 'Merchant Profile', 'woo-ops-console' ) }
+							{ __( 'Merchant Profile', 'merchant-ops-console' ) }
 						</strong>
 						<span>
-							{ __( 'Operations Lead', 'woo-ops-console' ) }
+							{ __( 'Operations Lead', 'merchant-ops-console' ) }
 						</span>
 					</div>
 				</div>
@@ -1507,7 +1507,7 @@ export function App( { config } ) {
 				<header className="woo-ops-topbar">
 					<div className="woo-ops-topbar-brand">
 						<SymbolIcon name="analytics" className="tone-primary" />
-						<h2>{ __( 'WooOps Console', 'woo-ops-console' ) }</h2>
+						<h2>{ __( 'MerchantOps Console', 'merchant-ops-console' ) }</h2>
 					</div>
 					<div className="woo-ops-topbar-actions">
 						<button className="woo-ops-icon-button" type="button">
@@ -1555,3 +1555,4 @@ export function App( { config } ) {
 		</div>
 	);
 }
+

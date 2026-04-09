@@ -9,8 +9,9 @@ if ( window.wooOpsConsoleConfig?.nonce ) {
 	);
 }
 
-const root = document.getElementById( 'woo-ops-console-root' );
+const root = document.getElementById( 'merchant-ops-console-root' );
 
 if ( root ) {
 	render( <App config={ window.wooOpsConsoleConfig || {} } />, root );
 }
+
