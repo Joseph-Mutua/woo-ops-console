@@ -2,7 +2,7 @@
 
 Woo Ops Console is a WooCommerce extension for merchant operations teams. It focuses on operational friction after checkout: failed payments, risky fulfillment delays, missing shipping details, refund anomalies, and repeated customer edits.
 
-![Woo Ops Console dashboard preview](./docs/media/dashboard-preview.svg)
+![Woo Ops Console Exceptions dashboard](./assets/screenshot-1.png)
 
 ## Quick Look
 
@@ -44,6 +44,8 @@ The admin experience borrows from the design system in the workspace control-tow
 
 The main dashboard highlights the orders that need attention first.
 
+![Order Exceptions Dashboard](./assets/screenshot-1.png)
+
 It covers:
 
 - failed payments
@@ -58,6 +60,8 @@ It covers:
 
 Ops users can quickly act on the current order selection.
 
+![Bulk Triage Actions](./assets/screenshot-2.png)
+
 It supports:
 
 - mark-for-review actions
@@ -65,9 +69,11 @@ It supports:
 - issue-type filtering
 - exporting flagged orders as CSV
 
-### Fulfillment Risk Indicator
+### Risk Analysis
 
 Each order receives a lightweight operational score and label.
+
+![Risk Analysis](./assets/screenshot-3.png)
 
 Signals currently include:
 
@@ -81,6 +87,8 @@ Signals currently include:
 ### Merchant Insights Panel
 
 The right-hand panels keep the dashboard readable at a glance.
+
+![Merchant Insights Panel](./assets/screenshot-4.png)
 
 They summarize:
 
@@ -195,7 +203,6 @@ Why:
 - no direct shipment-tracking carrier integrations yet
 - no persistent saved views or per-user dashboards yet
 - AI summaries are hooks-based rather than provider-integrated out of the box
-- screenshots in this repo are design previews rather than recorded production captures
 
 ## Future Improvements
 
@@ -204,7 +211,7 @@ Why:
 - saved triage views and role-based presets
 - fulfillment SLA thresholds configurable in plugin settings
 - dedicated order detail panel or metabox for deep exception context
-- real screenshots and short demo video capture from a live Woo store
+- short demo video capture from a live Woo store
 
 ## Testing
 

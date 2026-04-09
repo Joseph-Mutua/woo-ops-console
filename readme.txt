@@ -28,6 +28,13 @@ Features include:
 2. Activate the plugin through the WordPress admin.
 3. Navigate to `WooCommerce > Woo Ops Console`.
 
+== Screenshots ==
+
+1. Order Exceptions Dashboard highlighting flagged orders and issue severity.
+2. Bulk Triage Actions view with review tools, filters, and note capture.
+3. Risk Analysis page showing order health scoring and fulfillment signals.
+4. Merchant Insights Panel with operational summary cards and issue breakdowns.
+
 == Frequently Asked Questions ==
 
 = Does this require WooCommerce? =
