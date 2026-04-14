@@ -27,7 +27,3 @@ require_once MERCHANT_OPS_CONSOLE_PATH . 'src/php/Autoloader.php';
 
 MerchantOpsConsole\Autoloader::register();
 MerchantOpsConsole\Plugin::boot();
-
-
-
-
