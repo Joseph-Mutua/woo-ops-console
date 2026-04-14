@@ -14,4 +14,3 @@ const root = document.getElementById( 'merchant-ops-console-root' );
 if ( root ) {
 	render( <App config={ window.wooOpsConsoleConfig || {} } />, root );
 }
-

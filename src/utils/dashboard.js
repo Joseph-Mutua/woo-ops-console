@@ -63,4 +63,3 @@ export function buildCsv( orders ) {
 		)
 		.join( '\n' );
 }
-

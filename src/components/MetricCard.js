@@ -7,4 +7,3 @@ export function MetricCard( { label, value, delta, tone } ) {
 		</article>
 	);
 }
-
