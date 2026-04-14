@@ -68,7 +68,7 @@ final class OrderInsightsService {
 		 * @param array<string, mixed> $record Normalized order record.
 		 * @param WC_Order             $order WooCommerce order object.
 		 */
-		return (string) apply_filters( 'woo_ops_console_issue_summary', $summary, $record, $order );
+		return (string) apply_filters( 'merchant_ops_console_issue_summary', $summary, $record, $order );
 	}
 
 	/**
@@ -98,11 +98,11 @@ final class OrderInsightsService {
 			'paymentMethod'   => $order->get_payment_method_title() ?: __( 'Manual', 'merchant-ops-console' ),
 			'paymentStatus'   => $this->get_payment_state( $order ),
 			'shippingStatus'  => $this->get_shipping_state( $order ),
-			'triageStatus'    => sanitize_key( (string) $order->get_meta( '_woo_ops_console_triage_status', true ) ) ?: 'untriaged',
-			'triageIssue'     => sanitize_key( (string) $order->get_meta( '_woo_ops_console_triage_issue', true ) ),
+			'triageStatus'    => sanitize_key( (string) $order->get_meta( '_merchant_ops_console_triage_status', true ) ) ?: 'untriaged',
+			'triageIssue'     => sanitize_key( (string) $order->get_meta( '_merchant_ops_console_triage_issue', true ) ),
 			'location'        => trim( implode( ', ', array_filter( array( $order->get_shipping_city(), $order->get_shipping_country() ) ) ) ),
 			'customerEdits'   => $this->estimate_customer_edits( $order ),
-			'aiSummary'       => sanitize_text_field( (string) $order->get_meta( '_woo_ops_console_last_summary', true ) ),
+			'aiSummary'       => sanitize_text_field( (string) $order->get_meta( '_merchant_ops_console_last_summary', true ) ),
 		);
 	}
 

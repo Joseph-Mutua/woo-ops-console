@@ -37,16 +37,16 @@ final class OrderTriageService {
 			}
 
 			if ( 'mark-review' === $action ) {
-				$order->update_meta_data( '_woo_ops_console_triage_status', 'needs-review' );
-				$order->update_meta_data( '_woo_ops_console_triage_issue', $issue_type );
+				$order->update_meta_data( '_merchant_ops_console_triage_status', 'needs-review' );
+				$order->update_meta_data( '_merchant_ops_console_triage_issue', $issue_type );
 			}
 
 			if ( $note ) {
 				$order->add_order_note( $note, false );
 			}
 
-			$order->update_meta_data( '_woo_ops_console_last_triaged_at', gmdate( 'c' ) );
-			$order->update_meta_data( '_woo_ops_console_last_triaged_by', get_current_user_id() );
+			$order->update_meta_data( '_merchant_ops_console_last_triaged_at', gmdate( 'c' ) );
+			$order->update_meta_data( '_merchant_ops_console_last_triaged_by', get_current_user_id() );
 			$order->save();
 
 			$updated_orders[] = $this->order_insights->build_order_record( $order );

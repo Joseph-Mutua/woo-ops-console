@@ -3,14 +3,14 @@ import apiFetch from '@wordpress/api-fetch';
 import { App } from './App';
 import './styles.css';
 
-if ( window.wooOpsConsoleConfig?.nonce ) {
+if ( window.merchantOpsConsoleConfig?.nonce ) {
 	apiFetch.use(
-		apiFetch.createNonceMiddleware( window.wooOpsConsoleConfig.nonce )
+		apiFetch.createNonceMiddleware( window.merchantOpsConsoleConfig.nonce )
 	);
 }
 
 const root = document.getElementById( 'merchant-ops-console-root' );
 
 if ( root ) {
-	render( <App config={ window.wooOpsConsoleConfig || {} } />, root );
+	render( <App config={ window.merchantOpsConsoleConfig || {} } />, root );
 }

@@ -14,11 +14,11 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 global $wpdb;
 
 $meta_keys = array(
-	'_woo_ops_console_triage_status',
-	'_woo_ops_console_triage_issue',
-	'_woo_ops_console_last_summary',
-	'_woo_ops_console_last_triaged_at',
-	'_woo_ops_console_last_triaged_by',
+	'_merchant_ops_console_triage_status',
+	'_merchant_ops_console_triage_issue',
+	'_merchant_ops_console_last_summary',
+	'_merchant_ops_console_last_triaged_at',
+	'_merchant_ops_console_last_triaged_by',
 );
 
 foreach ( $meta_keys as $meta_key ) {

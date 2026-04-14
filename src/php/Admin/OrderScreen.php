@@ -45,12 +45,12 @@ final class OrderScreen implements ServiceContract {
 			$updated_columns[ $key ] = $label;
 
 			if ( 'order_status' === $key ) {
-				$updated_columns['woo_ops_console_risk'] = __( 'Ops risk', 'merchant-ops-console' );
+				$updated_columns['merchant_ops_console_risk'] = __( 'Ops risk', 'merchant-ops-console' );
 			}
 		}
 
-		if ( ! isset( $updated_columns['woo_ops_console_risk'] ) ) {
-			$updated_columns['woo_ops_console_risk'] = __( 'Ops risk', 'merchant-ops-console' );
+		if ( ! isset( $updated_columns['merchant_ops_console_risk'] ) ) {
+			$updated_columns['merchant_ops_console_risk'] = __( 'Ops risk', 'merchant-ops-console' );
 		}
 
 		return $updated_columns;
@@ -60,7 +60,7 @@ final class OrderScreen implements ServiceContract {
 	 * Renders the legacy order column.
 	 */
 	public function render_legacy_column( string $column_name, int $post_id ): void {
-		if ( 'woo_ops_console_risk' !== $column_name ) {
+		if ( 'merchant_ops_console_risk' !== $column_name ) {
 			return;
 		}
 
@@ -80,7 +80,7 @@ final class OrderScreen implements ServiceContract {
 	 * @param WC_Order|object $order_or_row Order object or screen row.
 	 */
 	public function render_hpos_column( string $column_name, $order_or_row ): void {
-		if ( 'woo_ops_console_risk' !== $column_name ) {
+		if ( 'merchant_ops_console_risk' !== $column_name ) {
 			return;
 		}
 
@@ -127,7 +127,7 @@ final class OrderScreen implements ServiceContract {
 		printf(
 			'<span class="%1$s">%2$s</span>',
 			esc_attr( $class_name ),
-			esc_html( sprintf( __( '%1$d · %2$s', 'merchant-ops-console' ), $order_data['riskScore'], $order_data['riskLabel'] ) )
+			esc_html( sprintf( __( '%1$d - %2$s', 'merchant-ops-console' ), $order_data['riskScore'], $order_data['riskLabel'] ) )
 		);
 	}
 }

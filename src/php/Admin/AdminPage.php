@@ -75,7 +75,7 @@ final class AdminPage implements ServiceContract {
 
 		wp_add_inline_script(
 			'merchant-ops-console-admin',
-			'window.wooOpsConsoleConfig = ' . wp_json_encode(
+			'window.merchantOpsConsoleConfig = ' . wp_json_encode(
 				array(
 					'dashboard' => $this->order_insights->get_dashboard_payload(),
 					'restUrl'   => esc_url_raw( rest_url( 'merchant-ops-console/v1' ) ),

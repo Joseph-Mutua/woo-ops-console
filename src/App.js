@@ -563,7 +563,7 @@ export function App( { config } ) {
 			...current,
 			[ orderId ]:
 				current[ orderId ] ||
-				__( 'Generating explanation�', 'merchant-ops-console' ),
+				__( 'Generating explanation…', 'merchant-ops-console' ),
 		} ) );
 
 		try {
@@ -630,7 +630,7 @@ export function App( { config } ) {
 						setSearchTerm( event.target.value )
 					}
 					placeholder={ __(
-						'Search by order, customer, issue, or location�',
+						'Search by order, customer, issue, or location…',
 						'merchant-ops-console'
 					) }
 					type="search"
@@ -801,7 +801,7 @@ export function App( { config } ) {
 												) }
 										</h4>
 										<p>
-											{ order.customer } �{ ' ' }
+											{ order.customer } -{ ' ' }
 											{ primaryIssue?.description ||
 												__(
 													'Needs manual attention before fulfillment proceeds.',
@@ -1566,7 +1566,7 @@ export function App( { config } ) {
 						<SymbolIcon name="analytics" className="tone-primary" />
 						<h2>
 							{ __(
-								'MerchantOps Console',
+								'Merchant Ops Console',
 								'merchant-ops-console'
 							) }
 						</h2>
